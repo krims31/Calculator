@@ -1,89 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-
-*{
-    margin: 0;
+* {
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    outline: 0;
+    transition: all 0.5s ease;
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #e3f2fd;
+body {
+    font-family: sans-serif;
 }
 
-.wrapper{
-    width: 65vmin;
-    height: 70vmin;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    justify-content: center;
-    background: #293447;
-    border-radius: 5px;
-    box-shadow: 0 20px 40px rgba(52, 87, 220, 0.2);
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
-.game-details{
-    color: #b8c6dc;
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 20px 27px;
-    display: flex;
-    justify-content: space-between;
+body {
+    background: linear-gradient( to right, slateblue, lightblue);
 }
 
-.play-board{
-    height: 100%;
-    width: 100%;
+.container {
+    height: 100vh;
+    width: 100vw;
     display: grid;
-    background: #212837;
-    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+    place-items: center;
 }
 
-.play-board .food{
-    background: #ff003d;
+.calculator {
+    position: relative;
+    height: auto;
+    width: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #000;
 }
 
-.play-board .head{
-    background: #60cbff;
-}
-
-.controls{
-    display: none;
-    justify-content: space-between;
-}
-
-.controls i{
-    padding: 25px 0;
-    text-align: center;
-    font-size: 1.3rem;
-    color: #b8c6dc;
-    width: calc(100% / 4);
+.theme-toggler {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #fff;
     cursor: pointer;
-    border-right: 1px solid #171b26;
+    z-index: 1;
 }
 
-@media screen and (max-width: 800px) {
-    .wrapper{
-        width: 90vmin;
-        height: 115vmin;
-    }
+.theme-toggler.active {
+    color: #333;
+}
 
-    .game-details{
-        font-size: 1rem;
-        padding: 15px 27px;
-    }
+.theme-toggler.active::before {
+    color: #fff;
+}
 
-    .controls{
-        display: flex;
-    }
+.theme-toggler::before {
+    content: '';
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #333;
+    z-index: -1;
+}
 
-    .controls i{
-        padding: 15px 0;
-        font-size: 1rem;
-    }
+#display {
+    margin: 0 10px;
+    height: 150px;
+    width: auto;
+    max-width: 270px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 30px;
+    margin-bottom: 20px;
+    overflow-x: scroll;
+}
+
+#display::-webkit-scrollbar {
+    display: block;
+    height: 3px;
+}
+
+button {
+    height: 60px;
+    width: 60px;
+    border: 0;
+    border-radius: 30px;
+    margin: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button#equal {
+    height: 130px;
+}
+
+/* light theme */
+
+.calculator {
+    background-color: #fff;
+}
+
+.calculator #display {
+    color: #0a1e23;
+}
+
+.calculator button#clear {
+    background-color: #ffd5d8;
+    color: #fc4552;
+}
+
+.calculator button.btn-number {
+    background-color: #c3eaff;
+    color: #000;
+}
+
+.calculator button.btn-operator {
+    background-color: #ffd0fd;
+    color: #f967f3;
+}
+
+.calculator button.btn-equal {
+    background-color: #adf9e7;
+    color: #000;
+}
+
+/* dark theme */
+
+.calculator.dark {
+    background-color: #071115;
+}
+
+.calculator.dark #display {
+    color: #f8fafd;
+}
+
+.calculator.dark button#clear {
+   background-color: #2d191e;
+   color: #bd3740;
+}
+
+.calculator.dark button.btn-number {
+    background-color: #1b2f38;
+    color: #f8fafb;
+}
+
+.calculator.dark button.btn-operator {
+    background-color: #2e1f39;
+    color: #aa00a4;
+}
+
+.calculator.dark button.btn-equal {
+    background-color: #223323;
+    color: #ffffff;
 }
